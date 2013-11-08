@@ -28,12 +28,6 @@ perl -pi -e 's/apc.shm_size=32M/apc.shm_size=256M/g' /root/centminmod/php.d/apc.
 perl -pi -e 's/apc.enable_cli=1/apc.enable_cli=0/g' /root/centminmod/php.d/apc.ini
 echo "apc.enable_cli = Off" >> /usr/local/lib/php.ini
 
-# Removed WP-CLI due to lack of support for custom WordPress directory structures
-#cd /usr/local/src/centmin-v1.2.3mod/addons/
-#chmod +x wpcli.sh
-#./wpcli.sh install
-#echo "export PATH=/root/.wp-cli/bin:$PATH" >> /root/.bash_profile
-
 cp -f /$POOR_IO_HOME/files/cloudflare.conf /$NGINX_CONF_DIR/cloudflare.conf
 cp -f /$POOR_IO_HOME/files/nginx.conf /$NGINX_CONF_DIR/nginx.conf
 cp -f /$POOR_IO_HOME/files/phpwpcache.conf /$NGINX_CONF_DIR/phpwpcache.conf
