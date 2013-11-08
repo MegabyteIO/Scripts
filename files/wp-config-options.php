@@ -1,9 +1,9 @@
 <?php
 
 
-/*********************************************/
-/* SECURITY CREDENTIALS AND SETTINGS */
-/*********************************************/
+/* ***************************************** */
+/*     SECURITY CREDENTIALS AND SETTINGS     */
+/* ***************************************** */
 
 
 /* Database connection settings */
@@ -42,9 +42,9 @@ define( 'WP_HTTP_BLOCK_EXTERNAL', FALSE ); // Do not block internet requests
 // define( 'WP_ACCESSIBLE_HOSTS', 'api.wordpress.org'); // Whitelist hosts for when WP_HTTP_BLOCK_EXTERNAL is true
 
 
-/*********************************************/
+/* ***************************************** */
 /* LANGUAGE AND DIRECTORY STRUCTURE SETTINGS */
-/*********************************************/
+/* ***************************************** */
 
 
 /* Localized language */
@@ -69,9 +69,9 @@ define( 'WPMU_PLUGIN_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/includes' );
 define( 'UPLOADS', '/media' ); // Upload directory relative to WP install directory
 
 
-/*********************************************/
-/* MULTISITE AND COOKIE SETTINGS */
-/*********************************************/
+/* ***************************************** */
+/*       MULTISITE AND COOKIE SETTINGS       */
+/* ***************************************** */
 
 
 /* Multisite settings */
@@ -87,9 +87,9 @@ define( 'SITECOOKIEPATH', '' );
 */
 
 
-/*********************************************/
-/* DEBUG SETTINGS */
-/*********************************************/
+/* ***************************************** */
+/*              DEBUG SETTINGS               */
+/* ***************************************** */
 
 
 define( 'CURRENT_SERVER', 'dev' ); // Set to dev for developement settings and live for production settings
@@ -141,9 +141,9 @@ case 'live': // Production debug settings
 }
 
 
-/*********************************************/
-/* CONTENT AND PERFORMANCE SETTINGS */
-/*********************************************/
+/* ***************************************** */
+/*      CONTENT AND PERFORMANCE SETTINGS     */
+/* ***************************************** */
 
 
 /* Content settings */
@@ -165,9 +165,9 @@ define( 'COMPRESS_CSS', FALSE );
 define( 'ENFORCE_GZIP', FALSE );
 
 
-/*********************************************/
-/* FTP AND PROXY CONNECTION SETTINGS */
-/*********************************************/
+/* ***************************************** */
+/*     FTP AND PROXY CONNECTION SETTINGS     */
+/* ***************************************** */
 
 
 /* Proxy settings */
@@ -188,9 +188,9 @@ define( 'FTP_SSL', FALSE );
 */
 
 
-/*********************************************/
-/* UPDATE SETTINGS */
-/*********************************************/
+/* ***************************************** */
+/*              UPDATE SETTINGS              */
+/* ***************************************** */
 
 
 define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', TRUE ); // Skip content directory when upgrading to a new WordPress version
