@@ -115,26 +115,6 @@ git clone https://github.com/roots/roots.git
 # Set nginx as owner
 chown -Rf nginx:nginx /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public
 
-# Move this stuff to must use plugin
-#wp plugin install wordpress-seo --activate
-#wp plugin install advanced-custom-fields --activate
-#wp plugin install mp6 --activate
-#wp plugin install wp-front-end-editor --activate
-#wp option update avatar_default 'mystery'
-#wp option update avatar_rating 'G'
-#wp option update category_base '/%category%/'
-#wp option update comments_notify 0
-#wp option update comments_max_links 1
-#wp option update comments_per_page 10
-#wp option update date_format 'j. F Y, H:i'
-#wp option update default_ping_status 'open'
-#wp option update default_post_edit_rows 30
-#wp option update gmt_offset -4
-#wp option update tag_base '/tag/'
-#wp option update permalink_structure '/%post_id%/%postname%' # Best as per http://www.labnol.org/internet/wordpress-permalinks-structure/12633/
-#wp option update rss_language 'en'
-#wp option update use_smilies 0
-
 # Remove default configuration and add new, optimized one
 rm -f /$NGINX_CONF_DIR/conf.d/$CLI_WEBSITE.conf
 cp /$POOR_IO_HOME/files/wordpress-optimized-nginx-config.conf /$NGINX_CONF_DIR/conf.d/$CLI_WEBSITE.conf
