@@ -64,16 +64,31 @@ cd /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/addons
 git clone https://github.com/Yoast/wordpress-seo.git wordpress-seo
 wget http://downloads.wordpress.org/plugin/mp6.zip
 unzip mp6.zip
+rm -f mp6.zip
 wget http://downloads.wordpress.org/plugin/google-authenticator.0.44.zip
 unzip google-authenticator.0.44.zip
+rm -f google-authenticator.0.44.zip
 wget http://downloads.wordpress.org/plugin/pods.2.3.18.zip
 unzip pods.2.3.18.zip
+rm -f pods.2.3.18.zip
 wget http://downloads.wordpress.org/plugin/my-shortcodes.2.06.zip
 unzip my-shortcodes.2.06.zip
+rm -f my-shortcodes.2.06.zip
 wget http://downloads.wordpress.org/plugin/seo-automatic-links.zip
 unzip seo-automatic-links.zip
+rm -f seo-automatic-links.zip
 wget http://downloads.wordpress.org/plugin/broken-link-checker.1.9.1.zip
 unzip broken-link-checker.1.9.1.zip
+rm -f broken-link-checker.1.9.1.zip
+wget http://downloads.wordpress.org/plugin/advanced-custom-fields.zip
+unzip advanced-custom-fields.zip
+rm -f advanced-custom-fields.zip
+wget http://downloads.wordpress.org/plugin/safe-redirect-manager.1.7.zip
+unzip safe-redirect-manager.1.7.zip
+rm -f safe-redirect-manager.1.7.zip
+wget http://downloads.wordpress.org/plugin/google-sitemap-generator.3.3.zip
+unzip google-sitemap-generator.3.3.zip
+rm -f google-sitemap-generator.3.3.zip
 git clone https://github.com/devinsays/options-framework-plugin.git options-framework
 
 # Add must-use plugins
