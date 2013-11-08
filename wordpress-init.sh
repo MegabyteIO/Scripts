@@ -4,8 +4,10 @@
 CLI_DATABASE_HOST=$DATABASE_SERVER
 # Default for CentminMod - change if using custom directory schema
 WEBSITE_INSTALL_DIRECTORY='home/nginx/domains'
-# Default location for PoorIO - edit at own risk
-POOR_IO_HOME='usr/local/src'
+# Default location for PoorIO
+POOR_IO_HOME='usr/local/src/PoorIO'
+# Default location for nginx configuration files
+NGINX_CONF_DIR='usr/local/nginx/conf'
 
 # Get website URL and backend path
 read -p 'Enter WordPress homepage URL (IMPORTANT: Enter the URL in the following format - yourwebsite.com): ' CLI_WEBSITE
@@ -24,7 +26,7 @@ echo "Creating database with random variables used for database name, username, 
 mysql -uroot -p --verbose -e "CREATE DATABASE $CLI_DATABASE_NAME; GRANT ALL PRIVILEGES ON $CLI_DATABASE_NAME.* TO '$CLI_DATABASE_USER'@'$CLI_DATABASE_HOST' IDENTIFIED BY '$CLI_DATABASE_PASSWORD'; FLUSH PRIVILEGES"
 
 # Set up wp-config.php
-cp /$POOR_IO_HOME/PoorIO/files/wp-config-options.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/wp-config.php
+cp /$POOR_IO_HOME/files/wp-config-options.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/wp-config.php
 perl -pi -e 's/DB_NAME_HANDLE/$CLI_DATABASE_NAME/g' /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/wp-config.php
 perl -pi -e 's/DB_USER_HANDLE/$CLI_DATABASE_USER/g' /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/wp-config.php
 perl -pi -e 's/DB_PASSWORD_HANDLE/$CLI_DATABASE_PASSWORD/g' /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/wp-config.php
@@ -49,7 +51,7 @@ mkdir addons
 mkdir includes
 
 # Download drop-in caching plugins from Git
-cd /$POOR_IO_HOME/PoorIO
+cd /$POOR_IO_HOME
 rm -Rf gitclones
 mkdir gitclones
 cd gitclones
@@ -57,7 +59,7 @@ git clone https://github.com/Automattic/batcache.git
 git clone https://github.com/eremedia/APC.git
 
 # Add plugins
-cd /$POOR_IO_HOME/PoorIO
+cd /$POOR_IO_HOME
 rm -Rf zipclones
 mkdir zipclones
 cd /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/addons
@@ -98,12 +100,12 @@ rm -f rename-wp-login.1.7.zip
 git clone https://github.com/devinsays/options-framework-plugin.git options-framework
 
 # Add must-use plugins
-cp /$POOR_IO_HOME/PoorIO/files/php-widget.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/includes/php-widget.php
+cp /$POOR_IO_HOME/files/php-widget.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/includes/php-widget.php
 
 # Move caching plugin files to appropriate directories
-cp /$POOR_IO_HOME/PoorIO/gitclones/batcache/advanced-cache.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/content/advanced-cache.php
-cp /$POOR_IO_HOME/PoorIO/gitclones/batcache/batcache.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/addons/batcache.php
-cp /$POOR_IO_HOME/PoorIO/gitclones/APC/object-cache.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/content/object-cache.php
+cp /$POOR_IO_HOME/gitclones/batcache/advanced-cache.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/content/advanced-cache.php
+cp /$POOR_IO_HOME/gitclones/batcache/batcache.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/addons/batcache.php
+cp /$POOR_IO_HOME/gitclones/APC/object-cache.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/content/object-cache.php
 
 # Add latest version of Roots IO (see http://roots.io/)
 cd /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/content/themes
@@ -131,4 +133,11 @@ chown -Rf nginx:nginx /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public
 #wp option update permalink_structure '/%post_id%/%postname%' # Best as per http://www.labnol.org/internet/wordpress-permalinks-structure/12633/
 #wp option update rss_language 'en'
 #wp option update use_smilies 0
-#rm -f /usr/local/nginx/conf/conf.d/$CLI_WEBSITE.conf
+
+# Remove default configuration and add new, optimized one
+rm -f /$NGINX_CONF_DIR/conf.d/$CLI_WEBSITE.conf
+cp /$POOR_IO_HOME/files/wordpress-optimized-nginx-config.conf /$NGINX_CONF_DIR/conf.d/$CLI_WEBSITE.conf
+perl -pi -e 's/REPLACETHIS/$CLI_WEBSITE/g' /$NGINX_CONF_DIR/conf.d/$CLI_WEBSITE.conf
+perl -pi -e 's/BACKENDPATH/$CLI_BACKEND_PATH/g' /$NGINX_CONF_DIR/conf.d/$CLI_WEBSITE.conf
+# Chown it up here.
+service nginx restart
