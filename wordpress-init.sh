@@ -79,21 +79,18 @@ rm -f my-shortcodes.2.06.zip
 wget http://downloads.wordpress.org/plugin/seo-automatic-links.zip
 unzip seo-automatic-links.zip
 rm -f seo-automatic-links.zip
-wget http://downloads.wordpress.org/plugin/broken-link-checker.1.9.1.zip
-unzip broken-link-checker.1.9.1.zip
-rm -f broken-link-checker.1.9.1.zip
-wget http://downloads.wordpress.org/plugin/advanced-custom-fields.zip
-unzip advanced-custom-fields.zip
-rm -f advanced-custom-fields.zip
-wget http://downloads.wordpress.org/plugin/safe-redirect-manager.1.7.zip
-unzip safe-redirect-manager.1.7.zip
-rm -f safe-redirect-manager.1.7.zip
-wget http://downloads.wordpress.org/plugin/google-sitemap-generator.3.3.zip
-unzip google-sitemap-generator.3.3.zip
-rm -f google-sitemap-generator.3.3.zip
-wget http://downloads.wordpress.org/plugin/limit-login-attempts.1.7.1.zip
-unzip limit-login-attempts.1.7.1.zip
-rm -f limit-login-attempts.1.7.1.zip
+#More research offline alternatives
+#wget http://downloads.wordpress.org/plugin/broken-link-checker.1.9.1.zip
+#unzip broken-link-checker.1.9.1.zip
+#rm -f broken-link-checker.1.9.1.zip
+#More research alternatives
+#wget http://downloads.wordpress.org/plugin/safe-redirect-manager.1.7.zip
+#unzip safe-redirect-manager.1.7.zip
+#rm -f safe-redirect-manager.1.7.zip
+#If Yoast SEO maps cant owrk:
+#wget http://downloads.wordpress.org/plugin/google-sitemap-generator.3.3.zip
+#unzip google-sitemap-generator.3.3.zip
+#rm -f google-sitemap-generator.3.3.zip
 wget http://downloads.wordpress.org/plugin/rename-wp-login.1.7.zip
 unzip rename-wp-login.1.7.zip
 rm -f rename-wp-login.1.7.zip
