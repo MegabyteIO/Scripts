@@ -89,6 +89,12 @@ rm -f safe-redirect-manager.1.7.zip
 wget http://downloads.wordpress.org/plugin/google-sitemap-generator.3.3.zip
 unzip google-sitemap-generator.3.3.zip
 rm -f google-sitemap-generator.3.3.zip
+wget http://downloads.wordpress.org/plugin/limit-login-attempts.1.7.1.zip
+unzip limit-login-attempts.1.7.1.zip
+rm -f limit-login-attempts.1.7.1.zip
+wget http://downloads.wordpress.org/plugin/rename-wp-login.1.7.zip
+unzip rename-wp-login.1.7.zip
+rm -f rename-wp-login.1.7.zip
 git clone https://github.com/devinsays/options-framework-plugin.git options-framework
 
 # Add must-use plugins
