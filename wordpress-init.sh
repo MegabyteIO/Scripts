@@ -101,6 +101,7 @@ git clone https://github.com/devinsays/options-framework-plugin.git options-fram
 
 # Add must-use plugins
 cp /$POOR_IO_HOME/files/php-widget.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/includes/php-widget.php
+cp /$POOR_IO_HOME/files/default-settings-plugin.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/includes/default-settings-plugin.php
 
 # Move caching plugin files to appropriate directories
 cp /$POOR_IO_HOME/gitclones/batcache/advanced-cache.php /$WEBSITE_INSTALL_DIRECTORY/$CLI_WEBSITE/public/content/advanced-cache.php
