@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# wget -O - https://raw.github.com/luismartingil/commands/master/101_remote2local_wireshark.sh | bash
 # Updates all software except the kernel
 yum -y --exclude=kernel* update
 # Installs some dependencies
