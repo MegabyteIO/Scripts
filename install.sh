@@ -48,6 +48,7 @@ fi
 cd /$CENTMIN_DIR/$INSTALL_FOLDER_NAME/$SCRIPTS_FOLDER
 chmod +x visudo.sh
 ./visudo.sh $NEW_ROOT_USERNAME
+chmod 644 visudo.sh
 
 # Change the SSH key to be used with new root user
 read -p "Is this a Digital Ocean droplet created using an SSH key (y/n)?" SSH_CHOICE
@@ -86,6 +87,7 @@ fi
 cd /$CENTMIN_DIR
 wget $CENTMIN_DOWNLOAD_URL
 unzip $CENTMIN_FILE_NAME
+rm -f $CENTMIN_FILE_NAME
 cd $CENTMIN_FOLDER_NAME
 
 # Change time zone
