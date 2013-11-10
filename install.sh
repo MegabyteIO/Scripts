@@ -96,7 +96,14 @@ perl -pi -e 's/Brisbane/New_York/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.s
 perl -pi -e 's/nginx centminmod/Powered by Poor.IO/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
 chmod +x centmin.sh
 
-# Modify centmin so that it jumps right to installing for a fresh install
-perl -pi -e 's/read -ep .Enter option . 1 . 21 . . option/option=install/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
-# Run the install
+# Change SSH port
+perl -pi -e 's/^read -ep "Enter option [ 1 - 21 ] " option$/^option=sshdport$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+#Enter existing SSH port number (default = 22 for fresh installs):   22
+#Enter the SSH port number you want to change to: $SSH_PORT_NUMBER
 ./centmin.sh
+perl -pi -e 's/^option=sshdport$/^read -ep "Enter option [ 1 - 21 ] " option$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+
+# Run a fresh Centmin install
+#perl -pi -e 's/read -ep .Enter option . 1 . 21 . . option/option=sshdport/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+# Run the install
+#./centmin.sh
