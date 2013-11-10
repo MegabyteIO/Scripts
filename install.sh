@@ -104,6 +104,6 @@ perl -pi -e 's/^read -ep "Enter option [ 1 - 21 ] " option$/^option=sshdport$/g'
 perl -pi -e 's/^option=sshdport$/^read -ep "Enter option [ 1 - 21 ] " option$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
 
 # Run a fresh Centmin install
-#perl -pi -e 's/read -ep .Enter option . 1 . 21 . . option/option=sshdport/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
-# Run the install
-#./centmin.sh
+perl -pi -e 's/^read -ep "Enter option [ 1 - 21 ] " option$/^option=install$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+./centmin.sh
+perl -pi -e 's/^option=install$/^read -ep "Enter option [ 1 - 21 ] " option$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
