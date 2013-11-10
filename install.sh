@@ -96,14 +96,23 @@ perl -pi -e 's/Brisbane/New_York/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.s
 perl -pi -e 's/nginx centminmod/Powered by Poor.IO/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
 chmod +x centmin.sh
 
+STRING_TO_MATCH="read -ep "Enter option [ 1 - 21 ] " option"
+REPLACE_STRING="optionz"
 # Change SSH port
-perl -pi -e 's/^read -ep "Enter option [ 1 - 21 ] " option$/^option=sshdport$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+perl -pi -e 's/$STRING_TO_MATCH/$REPLACE_STRING/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
 #Enter existing SSH port number (default = 22 for fresh installs):   22
+perl -pi -e 's/\Aread -ep "Enter existing SSH port number (default = 22 for fresh installs): " EXISTPORTNUM\Z/\A EXISTPORTNUM=22\Z/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/inc/sshd.inc
+perl -pi -e 's/\Aread -ep "Enter the SSH port number you want to change to: " PORTNUM\Z/\A PORTNUM=$SSH_PORT_NUMBER\Z/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/inc/sshd.inc
 #Enter the SSH port number you want to change to: $SSH_PORT_NUMBER
 ./centmin.sh
-perl -pi -e 's/^option=sshdport$/^read -ep "Enter option [ 1 - 21 ] " option$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+
+# Restore files to original format
+#perl -pi -e 's/\Aoption=sshdport\Z/\Aread -ep "Enter option [ 1 - 21 ] " option\Z/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+#perl -pi -e 's/\AEXISTPORTNUM=22\Z/\Aread -ep "Enter existing SSH port number (default = 22 for fresh installs): " EXISTPORTNUM\Z/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/inc/sshd.inc
+#perl -pi -e 's/\APORTNUM=\Z$SSH_PORT_NUMBER/\Aread -ep "Enter the SSH port number you want to change to: " PORTNUM\Z/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/inc/sshd.inc
 
 # Run a fresh Centmin install
-perl -pi -e 's/^read -ep "Enter option [ 1 - 21 ] " option$/^option=install$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
-./centmin.sh
-perl -pi -e 's/^option=install$/^read -ep "Enter option [ 1 - 21 ] " option$/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+#perl -pi -e 's/\Aread -ep "Enter option [ 1 - 21 ] " option\Z/\Aoption=install\Z/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
+#./centmin.sh
+# Restore Centmin files to original format
+#perl -pi -e 's/\Aoption=install\Z/\Aread -ep "Enter option [ 1 - 21 ] " option\Z/g' /$CENTMIN_DIR/$CENTMIN_FOLDER_NAME/centmin.sh
